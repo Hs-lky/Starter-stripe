@@ -1,0 +1,48 @@
+<header class="sticky-header" [ngClass]="{ sticked: isSticky }">
+  <div class="container mx-auto flex justify-between h-16 px-6">
+    <div class="flex items-center">
+      <h1 class="headline cursor-pointer">
+        <a>angular-saas</a>
+      </h1>
+    </div>
+    <nav class="hidden md:flex justify-center items-center">
+      <ul class="flex justify-center items-center gap-5">
+        <li class="nav-item">
+          <a routerLink="." fragment="features">Features</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="." fragment="pricing">Pricing</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="hidden md:flex items-center gap-2">
+      <div class="m-button-outline text-sm !px-4">Sign In</div>
+      <div class="m-button-solid text-sm !px-4">Get Started</div>
+    </div>
+    <div
+      (click)="toggleMenu()"
+      class="flex md:hidden items-center text-2xl cursor-pointer"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="mobile-menu" [ngClass]="{ open: isMenuOpen }">
+      <div (click)="toggleMenu()" class="flex ml-auto text-3xl cursor-pointer">
+        <i class="fa-solid fa-xmark my-auto"></i>
+      </div>
+      <nav class="flex flex-col justify-center items-center text-center">
+        <ul>
+          <li class="nav-item text-2xl p-3">
+            <a routerLink="." fragment="features">Features</a>
+          </li>
+          <li class="nav-item text-2xl p-3">
+            <a routerLink="." fragment="pricing">Pricing</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="flex flex-col items-center gap-2">
+        <div class="m-button-outline !w-[250px] !py-2">Sign In</div>
+        <div class="m-button-solid !w-[250px] !py-2">Get Started</div>
+      </div>
+    </div>
+  </div>
+</header>

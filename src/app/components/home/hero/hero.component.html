@@ -1,0 +1,65 @@
+<section id="hero" class="relative overflow-hidden py-20 sm:py-32 bg-gradient-to-b from-gray-50 to-white">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+  
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Hero Text -->
+    <article class="max-w-4xl mx-auto text-center animate-fade-in">
+      <h1 class="text-4xl sm:text-6xl lg:text-display-1 font-bold text-gray-700 tracking-tight mb-6">
+        Start your <span class="text-primary-500">SaaS</span><br/>
+        with <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">Angular!</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-12 animate-slide-up">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras congue mi
+        magna, vel pellentesque libero vestibulum nec.
+      </p>
+      
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16 animate-slide-up">
+        <button class="px-8 py-4 bg-primary-500 text-white rounded-xl font-medium 
+                     hover:bg-primary-600 transform hover:-translate-y-1 transition-all duration-200
+                     shadow-soft hover:shadow-hover">
+          Get Started
+        </button>
+        <button class="px-8 py-4 bg-white text-primary-500 rounded-xl font-medium 
+                     border-2 border-primary-500 hover:bg-primary-50
+                     transform hover:-translate-y-1 transition-all duration-200">
+          Learn More
+        </button>
+      </div>
+    </article>
+
+    <!-- Features List -->
+    <article class="max-w-3xl mx-auto mb-20">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-600">
+        @for (feature of features; track feature) {
+          <div class="flex items-center gap-3 p-4 bg-white rounded-lg shadow-soft
+                      hover:shadow-hover transform hover:-translate-y-1 transition-all duration-200">
+            <i class="fa-solid fa-check text-primary-500 bg-primary-50 p-2 rounded-full"></i>
+            <span class="font-medium">{{feature}}</span>
+          </div>
+        }
+      </div>
+    </article>
+
+    <!-- Trusted By Section -->
+    <article class="text-center animate-fade-in">
+      <h6 class="font-bold text-gray-400 tracking-wider mb-12">TRUSTED BY TEAMS AT</h6>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center items-center
+                  opacity-80 grayscale hover:grayscale-0 transition-all duration-300">
+        @for (company of companies; track company) {
+          <div class="transform hover:scale-105 transition-transform duration-200">
+            <img
+              [ngSrc]="company.src"
+              [alt]="company.name"
+              width="120"
+              height="55"
+              class="object-contain"
+            />
+          </div>
+        }
+      </div>
+    </article>
+  </div>
+</section>
