@@ -16,7 +16,7 @@ interface SocialLink extends FooterLink {
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule],
   templateUrl: './footer.component.html',
 })
 export class FooterComponent implements OnInit {
