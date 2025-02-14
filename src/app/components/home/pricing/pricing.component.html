@@ -1,138 +1,382 @@
-<section id="pricing" class="my-12 p-12">
-  <div class="flex flex-col justify-center items-center text-center gap-4 mb-6">
-    <h1 class="text-[#343140] text-[38px] lg:text-5xl font-bold select-none">
-      Flexible Pricing.
-    </h1>
-    <p class="font-medium text-[#636869]">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </p>
-  </div>
-  <div
-    class="flex justify-center items-center w-fit mx-auto cursor-pointer select-none mb-6 gap-2"
-    (click)="toggleIsAnnually()"
-  >
-    <label class="switch">
-      <input
-        type="checkbox"
-        [checked]="isAnnually"
-        (click)="toggleIsAnnually()"
-      />
-      <span class="slider"></span>
-    </label>
-    <div class="flex justify-center items-center gap-2">
-      <span class="font-medium">Go yearly the best savings</span>
-      <div class="bg-primary text-white text-xs font-semibold p-2 rounded-md">
-        -20%
+<section id="pricing" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+  <!-- Background Elements -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-5 animate-pulse-slow"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-48 bg-primary-500/5 blur-3xl transform -skew-y-6"></div>
+  
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <!-- Section Header -->
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <span class="inline-block text-primary-600 font-semibold mb-4 animate-slide-up">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50">
+          <i class="fas fa-tag text-primary-500"></i>
+          Simple Pricing
+        </span>
+      </span>
+      
+      <h2 class="text-3xl sm:text-4xl lg:text-display-2 font-bold text-gray-700 tracking-tight mb-6 animate-fade-in">
+        Choose the perfect plan for your
+        <span class="relative inline-block">
+          <span class="absolute inset-x-0 bottom-2 h-3 bg-primary-200 opacity-50"></span>
+          <span class="relative">business</span>
+        </span>
+      </h2>
+      <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-8 animate-fade-in">
+        Start with our free plan and upgrade as you grow. All plans include core features.
+      </p>
+
+      <!-- Billing Toggle -->
+      <div class="flex items-center justify-center gap-4 mb-12">
+        <span class="text-gray-600 font-medium">Monthly</span>
+        <button class="relative w-16 h-8 rounded-full bg-primary-100 group transition-colors
+                     hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                [class.bg-primary-500]="isAnnual"
+                (click)="toggleBilling()"
+                aria-label="Toggle billing frequency">
+          <span class="absolute left-1 top-1 w-6 h-6 rounded-full bg-white shadow-md transform transition-transform duration-200"
+                [class.translate-x-8]="isAnnual"></span>
+        </button>
+        <span class="text-gray-600 font-medium">
+          Annual
+          <span class="inline-block ml-1 text-sm text-primary-500 font-semibold">Save 20%</span>
+        </span>
       </div>
     </div>
-  </div>
-  <div
-    class="grid grid-cols-1 md:grid-cols-3 place-items-center items-start max-w-fit mx-auto gap-6"
-  >
-    <div class="pricing-box hover:scale-105">
-      <div class="flex flex-col select-none gap-3">
-        <span>Free</span>
-        <h3>$0 <span class="!text-sm">/mo</span></h3>
-      </div>
-      <div class="m-button-solid !w-full">Get Started</div>
-      <div class="border w-full bg-gray-300 rounded-full"></div>
-      <div class="flex flex-col">
-        <ul class="flex flex-col gap-2">
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="pricing-box hover:scale-105">
-      <div class="flex flex-col select-none gap-3">
-        <span>Plus</span>
-        <div class="flex items-center gap-2">
-          <h3>
-            ${{ getDiscountedPrice(plusPrice) }}
-            <span class="!text-sm">/mo</span>
-          </h3>
-          <div
-            *ngIf="isAnnually"
-            class="bg-primary w-fit text-white text-xs font-semibold rounded-md p-2"
-          >
-            -20%
+
+    <!-- Pricing Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <!-- Free Plan -->
+      <div class="group relative bg-white rounded-2xl shadow-soft hover:shadow-hover 
+                  transform hover:-translate-y-1 transition-all duration-300 animate-scale
+                  overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-0 
+                    group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative p-8">
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">Free</h3>
+          <div class="flex items-baseline mb-6">
+            <span class="text-4xl font-bold text-gray-900">$0</span>
+            <span class="text-gray-500 ml-2">/month</span>
           </div>
+          
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>Up to 5 users</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>Basic analytics</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>1GB storage</span>
+            </li>
+          </ul>
+          
+          <button class="w-full px-6 py-3 bg-white text-primary-500 rounded-xl font-medium 
+                       border-2 border-primary-500 hover:bg-primary-50 group-hover:bg-primary-500 group-hover:text-white
+                       transform transition-all duration-200
+                       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+            Get Started
+          </button>
         </div>
       </div>
-      <div class="m-button-solid !w-full">Get Started</div>
-      <div class="border w-full bg-gray-300 rounded-full"></div>
-      <div class="flex flex-col">
-        <ul class="flex flex-col gap-2">
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="pricing-box highlighted hover:scale-105">
-      <div class="flex flex-col select-none gap-3">
-        <span>Pro</span>
-        <div class="flex items-center gap-2">
-          <h3>
-            ${{ getDiscountedPrice(proPrice) }}
-            <span class="!text-sm">/mo</span>
-          </h3>
-          <div
-            *ngIf="isAnnually"
-            class="bg-primary w-fit text-white text-xs font-semibold rounded-md p-2"
-          >
-            -20%
+
+      <!-- Pro Plan -->
+      <div class="group relative bg-white rounded-2xl shadow-hover 
+                  transform hover:-translate-y-1 transition-all duration-300 animate-scale
+                  overflow-hidden ring-2 ring-primary-500">
+        <div class="absolute top-0 right-0">
+          <span class="inline-block bg-primary-500 text-white text-sm font-semibold px-4 py-1 rounded-bl-xl">
+            Popular
+          </span>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-50 to-transparent opacity-0 
+                    group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative p-8">
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">Pro</h3>
+          <div class="flex items-baseline mb-6">
+            <span class="text-4xl font-bold text-gray-900">${{isAnnual ? '49' : '59'}}</span>
+            <span class="text-gray-500 ml-2">/month</span>
           </div>
+          
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>Up to 20 users</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>Advanced analytics</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>10GB storage</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>Priority support</span>
+            </li>
+          </ul>
+          
+          <button class="w-full px-6 py-3 bg-primary-500 text-white rounded-xl font-medium 
+                       hover:bg-primary-600 transform transition-all duration-200
+                       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+                       shadow-soft hover:shadow-hover">
+            Start Free Trial
+          </button>
         </div>
       </div>
-      <div class="m-button-solid !w-full">Get Started</div>
-      <div class="border w-full bg-gray-300 rounded-full"></div>
-      <div class="flex flex-col">
-        <ul class="flex flex-col gap-2">
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-          <li class="flex justify-center items-center gap-2">
-            <i class="fa-solid fa-check text-primary"></i>
-            <p>Lorem ipsum dolor sit amet</p>
-          </li>
-        </ul>
+
+      <!-- Enterprise Plan -->
+      <div class="group relative bg-white rounded-2xl shadow-soft hover:shadow-hover 
+                  transform hover:-translate-y-1 transition-all duration-300 animate-scale
+                  overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-0 
+                    group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="relative p-8">
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">Enterprise</h3>
+          <div class="flex items-baseline mb-6">
+            <span class="text-4xl font-bold text-gray-900">${{isAnnual ? '99' : '119'}}</span>
+            <span class="text-gray-500 ml-2">/month</span>
+          </div>
+          
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>Unlimited users</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>Custom analytics</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>Unlimited storage</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>24/7 support</span>
+            </li>
+            <li class="flex items-center gap-3 text-gray-600">
+              <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
+              <span>Custom integrations</span>
+            </li>
+          </ul>
+          
+          <button class="w-full px-6 py-3 bg-white text-primary-500 rounded-xl font-medium 
+                       border-2 border-primary-500 hover:bg-primary-50 group-hover:bg-primary-500 group-hover:text-white
+                       transform transition-all duration-200
+                       focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+            Contact Sales
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Comparison -->
+    <div class="mt-20 max-w-4xl mx-auto">
+      <h3 class="text-2xl font-bold text-gray-700 mb-8 text-center">Compare Plans</h3>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="py-4 px-6 text-left text-gray-500 font-medium">Features</th>
+              <th class="py-4 px-6 text-center text-gray-500 font-medium">Free</th>
+              <th class="py-4 px-6 text-center text-gray-500 font-medium">Pro</th>
+              <th class="py-4 px-6 text-center text-gray-500 font-medium">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+              <td class="py-4 px-6 text-gray-600">Users</td>
+              <td class="py-4 px-6 text-center text-gray-600">Up to 5</td>
+              <td class="py-4 px-6 text-center text-gray-600">Up to 20</td>
+              <td class="py-4 px-6 text-center text-gray-600">Unlimited</td>
+            </tr>
+            <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+              <td class="py-4 px-6 text-gray-600">Storage</td>
+              <td class="py-4 px-6 text-center text-gray-600">1GB</td>
+              <td class="py-4 px-6 text-center text-gray-600">10GB</td>
+              <td class="py-4 px-6 text-center text-gray-600">Unlimited</td>
+            </tr>
+            <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+              <td class="py-4 px-6 text-gray-600">Support</td>
+              <td class="py-4 px-6 text-center text-gray-600">Email</td>
+              <td class="py-4 px-6 text-center text-gray-600">Priority</td>
+              <td class="py-4 px-6 text-center text-gray-600">24/7 Dedicated</td>
+            </tr>
+            <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+              <td class="py-4 px-6 text-gray-600">Analytics</td>
+              <td class="py-4 px-6 text-center text-gray-600">Basic</td>
+              <td class="py-4 px-6 text-center text-gray-600">Advanced</td>
+              <td class="py-4 px-6 text-center text-gray-600">Custom</td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="py-4 px-6 text-gray-600">API Access</td>
+              <td class="py-4 px-6 text-center">
+                <i class="fas fa-times text-gray-400"></i>
+              </td>
+              <td class="py-4 px-6 text-center">
+                <i class="fas fa-check text-primary-500"></i>
+              </td>
+              <td class="py-4 px-6 text-center">
+                <i class="fas fa-check text-primary-500"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="mt-20 max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="inline-block text-primary-600 font-semibold mb-4 animate-slide-up">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50">
+            <i class="fas fa-question-circle text-primary-500"></i>
+            Support
+          </span>
+        </span>
+        
+        <h3 class="text-2xl sm:text-3xl font-bold text-gray-700 mb-4">Frequently Asked Questions</h3>
+        <p class="text-gray-500">Have questions? We're here to help.</p>
+      </div>
+      
+      <div class="space-y-4">
+        @for (faq of faqs; track faq) {
+          <div class="bg-white rounded-xl shadow-soft overflow-hidden group"
+               [class.ring-2]="faq.isOpen"
+               [class.ring-primary-500]="faq.isOpen">
+            <button class="w-full px-6 py-4 text-left hover:bg-gray-50 transition-colors duration-200
+                          focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                    (click)="faq.isOpen = !faq.isOpen"
+                    [attr.aria-expanded]="faq.isOpen">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center
+                              group-hover:bg-primary-100 transition-colors duration-200">
+                    <i class="fas fa-question text-sm text-primary-500"></i>
+                  </div>
+                  <span class="font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-200">
+                    {{faq.question}}
+                  </span>
+                </div>
+                <div class="flex-shrink-0 ml-4">
+                  <div class="w-6 h-6 rounded-full flex items-center justify-center
+                              group-hover:bg-primary-50 transition-all duration-200"
+                       [class.bg-primary-50]="faq.isOpen"
+                       [class.rotate-180]="faq.isOpen">
+                    <i class="fas fa-chevron-down text-sm transition-transform duration-200"
+                       [class.text-gray-400]="!faq.isOpen"
+                       [class.text-primary-500]="faq.isOpen"></i>
+                  </div>
+                </div>
+              </div>
+            </button>
+            @if (faq.isOpen) {
+              <div class="px-6 pb-4 animate-fade-in">
+                <div class="pt-4 border-t border-gray-100">
+                  <div class="flex gap-3">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center">
+                      <i class="fas fa-info text-sm text-primary-500"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">{{faq.answer}}</p>
+                  </div>
+                  @if (faq.additionalInfo) {
+                    <div class="mt-4 flex items-center gap-2">
+                      <i class="fas fa-lightbulb text-yellow-500"></i>
+                      <p class="text-sm text-gray-500">{{faq.additionalInfo}}</p>
+                    </div>
+                  }
+                  @if (faq.links?.length) {
+                    <div class="mt-4 flex flex-wrap gap-3">
+                      @for (link of faq.links; track link) {
+                        <a [href]="link.url" 
+                           class="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-lg text-sm text-gray-600
+                                  hover:bg-primary-50 hover:text-primary-600 transition-colors duration-200">
+                          <i [class]="link.icon"></i>
+                          {{link.text}}
+                        </a>
+                      }
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Contact Support -->
+      <div class="mt-12 text-center">
+        <p class="text-gray-500 mb-4">Still have questions?</p>
+        <a href="#contact" 
+           class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-600 rounded-xl font-medium 
+                  border-2 border-primary-500 hover:bg-primary-50 
+                  transform hover:-translate-y-1 transition-all duration-200
+                  focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+                  shadow-soft hover:shadow-hover">
+          <i class="fas fa-headset"></i>
+          Contact Support
+        </a>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- Documentation -->
+        <a href="#docs" 
+           class="group p-6 bg-white rounded-xl shadow-soft hover:shadow-hover
+                  transform hover:-translate-y-1 transition-all duration-200">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center
+                        group-hover:bg-primary-500 transition-colors duration-200">
+              <i class="fas fa-book text-primary-500 group-hover:text-white transition-colors duration-200"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-700 group-hover:text-primary-500 transition-colors duration-200">
+                Documentation
+              </h4>
+              <p class="text-sm text-gray-500">Detailed guides and API docs</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Community -->
+        <a href="#community" 
+           class="group p-6 bg-white rounded-xl shadow-soft hover:shadow-hover
+                  transform hover:-translate-y-1 transition-all duration-200">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center
+                        group-hover:bg-primary-500 transition-colors duration-200">
+              <i class="fas fa-users text-primary-500 group-hover:text-white transition-colors duration-200"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-700 group-hover:text-primary-500 transition-colors duration-200">
+                Community
+              </h4>
+              <p class="text-sm text-gray-500">Join our developer community</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Video Tutorials -->
+        <a href="#tutorials" 
+           class="group p-6 bg-white rounded-xl shadow-soft hover:shadow-hover
+                  transform hover:-translate-y-1 transition-all duration-200">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center
+                        group-hover:bg-primary-500 transition-colors duration-200">
+              <i class="fas fa-play text-primary-500 group-hover:text-white transition-colors duration-200"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-700 group-hover:text-primary-500 transition-colors duration-200">
+                Video Tutorials
+              </h4>
+              <p class="text-sm text-gray-500">Watch step-by-step guides</p>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
