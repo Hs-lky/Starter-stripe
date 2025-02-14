@@ -1,31 +1,54 @@
 <section id="hero" class="relative overflow-hidden py-20 sm:py-32 bg-gradient-to-b from-gray-50 to-white">
   <!-- Background Pattern -->
-  <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+  <div class="absolute inset-0 bg-grid-pattern opacity-5 animate-pulse-slow"></div>
   
   <!-- Main Content -->
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Hero Text -->
-    <article class="max-w-4xl mx-auto text-center animate-fade-in">
-      <h1 class="text-4xl sm:text-6xl lg:text-display-1 font-bold text-gray-700 tracking-tight mb-6">
-        Start your <span class="text-primary-500">SaaS</span><br/>
-        with <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">Angular!</span>
+    <article class="max-w-4xl mx-auto text-center">
+      <div class="inline-block animate-float">
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-600 text-sm font-medium mb-8">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+          </span>
+          New Features Available!
+        </span>
+      </div>
+      
+      <h1 class="text-4xl sm:text-6xl lg:text-display-1 font-bold text-gray-700 tracking-tight mb-6 animate-fade-in">
+        Start your <span class="text-primary-500 relative inline-block group">
+          SaaS
+          <span class="absolute bottom-0 left-0 w-full h-1 bg-primary-200 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+        </span><br/>
+        with <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500 relative inline-block hover:opacity-90 transition-opacity cursor-default">Angular!</span>
       </h1>
-      <p class="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-12 animate-slide-up">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras congue mi
-        magna, vel pellentesque libero vestibulum nec.
+      
+      <p class="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-12 animate-slide-up leading-relaxed">
+        Build scalable applications with modern tools and frameworks.
+        Experience the power of Angular with our starter template.
       </p>
       
       <!-- CTA Buttons -->
       <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16 animate-slide-up">
-        <button class="px-8 py-4 bg-primary-500 text-white rounded-xl font-medium 
+        <button class="group px-8 py-4 bg-primary-500 text-white rounded-xl font-medium 
                      hover:bg-primary-600 transform hover:-translate-y-1 transition-all duration-200
-                     shadow-soft hover:shadow-hover">
-          Get Started
+                     shadow-soft hover:shadow-hover focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                aria-label="Get started with our platform">
+          <span class="flex items-center justify-center gap-2">
+            Get Started
+            <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+          </span>
         </button>
-        <button class="px-8 py-4 bg-white text-primary-500 rounded-xl font-medium 
+        <button class="group px-8 py-4 bg-white text-primary-500 rounded-xl font-medium 
                      border-2 border-primary-500 hover:bg-primary-50
-                     transform hover:-translate-y-1 transition-all duration-200">
-          Learn More
+                     transform hover:-translate-y-1 transition-all duration-200
+                     focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                aria-label="Learn more about our features">
+          <span class="flex items-center justify-center gap-2">
+            Learn More
+            <i class="fas fa-info-circle transform group-hover:rotate-12 transition-transform"></i>
+          </span>
         </button>
       </div>
     </article>
@@ -34,10 +57,17 @@
     <article class="max-w-3xl mx-auto mb-20">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-600">
         @for (feature of features; track feature) {
-          <div class="flex items-center gap-3 p-4 bg-white rounded-lg shadow-soft
-                      hover:shadow-hover transform hover:-translate-y-1 transition-all duration-200">
-            <i class="fa-solid fa-check text-primary-500 bg-primary-50 p-2 rounded-full"></i>
-            <span class="font-medium">{{feature}}</span>
+          <div class="group flex items-center gap-3 p-4 bg-white rounded-lg shadow-soft
+                      hover:shadow-hover transform hover:-translate-y-1 transition-all duration-200
+                      cursor-pointer"
+               role="button"
+               tabindex="0"
+               [attr.aria-label]="'Learn more about ' + feature">
+            <div class="relative">
+              <div class="absolute inset-0 bg-primary-200 rounded-full transform scale-0 group-hover:scale-150 transition-transform duration-300 opacity-20"></div>
+              <i class="fa-solid fa-check text-primary-500 bg-primary-50 p-2 rounded-full relative z-10"></i>
+            </div>
+            <span class="font-medium group-hover:text-primary-600 transition-colors">{{feature}}</span>
           </div>
         }
       </div>
@@ -45,21 +75,36 @@
 
     <!-- Trusted By Section -->
     <article class="text-center animate-fade-in">
-      <h6 class="font-bold text-gray-400 tracking-wider mb-12">TRUSTED BY TEAMS AT</h6>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center items-center
-                  opacity-80 grayscale hover:grayscale-0 transition-all duration-300">
+      <h6 class="font-bold text-gray-400 tracking-wider mb-12 flex items-center justify-center gap-2">
+        <span class="h-px w-8 bg-gray-300"></span>
+        TRUSTED BY TEAMS AT
+        <span class="h-px w-8 bg-gray-300"></span>
+      </h6>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center items-center">
         @for (company of companies; track company) {
-          <div class="transform hover:scale-105 transition-transform duration-200">
+          <div class="group relative transform hover:scale-105 transition-all duration-300 cursor-pointer"
+               role="img"
+               [attr.aria-label]="company.name + ' uses our platform'">
+            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 rounded-lg shadow-hover transition-all duration-300"></div>
             <img
               [ngSrc]="company.src"
               [alt]="company.name"
               width="120"
               height="55"
-              class="object-contain"
+              class="object-contain relative z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+              loading="lazy"
             />
           </div>
         }
       </div>
     </article>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
+      <button class="text-gray-400 hover:text-primary-500 transition-colors focus:outline-none"
+              aria-label="Scroll to features section">
+        <i class="fas fa-chevron-down text-2xl"></i>
+      </button>
+    </div>
   </div>
 </section>
