@@ -5,7 +5,6 @@ import { SubscriptionManagementComponent } from './components/dashboard/subscrip
 
 // Routes
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
   {
@@ -13,8 +12,8 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home.component').then(c => c.HomeComponent)
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'auth',
+    loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'dashboard',
@@ -35,4 +34,8 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
