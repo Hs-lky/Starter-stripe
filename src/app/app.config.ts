@@ -1,14 +1,15 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, isDevMode, PLATFORM_ID, inject } from '@angular/core';
 import {
   InMemoryScrollingFeature,
   InMemoryScrollingOptions,
   provideRouter,
   withInMemoryScrolling,
 } from '@angular/router';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideStore } from '@ngrx/store';
+import { isPlatformBrowser } from '@angular/common';
 
 const scrollConfig: InMemoryScrollingOptions = {
   scrollPositionRestoration: 'top',
@@ -23,6 +24,24 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, scrollingFeature),
     provideClientHydration(),
     provideStore(),
-    provideHttpClient(withFetch()),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([
+        (req, next) => {
+          // Check if we're in the browser environment
+          if (isPlatformBrowser(inject(PLATFORM_ID))) {
+            const token = localStorage.getItem('token');
+            if (token) {
+              req = req.clone({
+                setHeaders: {
+                  Authorization: `Bearer ${token}`
+                }
+              });
+            }
+          }
+          return next(req);
+        }
+      ])
+    ),
   ],
 };
