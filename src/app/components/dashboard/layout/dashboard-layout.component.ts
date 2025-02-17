@@ -127,28 +127,28 @@ export class DashboardLayoutComponent {
   menuItems: MenuItem[] = [
     {
       icon: 'fas fa-home',
-      label: 'Dashboard',
+      label: 'Tableau de Bord',
       route: '/dashboard'
     },
     {
       icon: 'fas fa-users',
-      label: 'User Management',
+      label: 'Gestion des Utilisateurs',
       route: '/dashboard/users',
-      badge: 'New'
+      badge: 'Nouveau'
     },
     {
       icon: 'fas fa-credit-card',
-      label: 'Subscriptions',
+      label: 'Abonnements',
       route: '/dashboard/subscriptions'
     },
     {
       icon: 'fas fa-chart-bar',
-      label: 'Analytics',
+      label: 'Analytique',
       route: '/dashboard/analytics'
     },
     {
       icon: 'fas fa-cog',
-      label: 'Settings',
+      label: 'Paramètres',
       route: '/dashboard/settings'
     }
   ];
