@@ -82,7 +82,7 @@ interface MenuItem {
                   <img src="assets/avatar.jpg" 
                        alt="Profile" 
                        class="w-8 h-8 rounded-full">
-                  <span class="hidden sm:block text-sm font-medium text-gray-700">John Doe</span>
+                  <!-- <span class="hidden sm:block text-sm font-medium text-gray-700">John Doe</span> -->
                   <i class="fas fa-chevron-down text-xs text-gray-400"></i>
                 </button>
 
