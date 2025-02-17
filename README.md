@@ -1,27 +1,114 @@
-# AngularSaasStarter
+Angular SaaS Starter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+Ce projet est un modèle de démarrage SaaS basé sur Angular, conçu pour fournir une base structurée au développement d'applications web évolutives.
 
-## Development server
+Table des matières
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Fonctionnalités
 
-## Code scaffolding
+Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Développement
 
-## Build
+Compilation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Tests
 
-## Running unit tests
+Docker
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Déploiement
 
-## Running end-to-end tests
+Variables d'environnement
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Contribution
 
-## Further help
+Licence
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Fonctionnalités
+
+Angular 17 avec support SSR
+
+Système d'authentification et d'autorisation
+
+Gestion des abonnements et des utilisateurs
+
+Intégration API
+
+TailwindCSS pour le style
+
+Dockerisé pour un déploiement facile
+
+Installation
+
+Prérequis
+
+Node.js (>= 20)
+
+Angular CLI (>= 17)
+
+Docker (optionnel, pour le déploiement en conteneur)
+
+Étapes
+
+Cloner le dépôt :
+
+git clone <repository-url>
+cd angular-saas-starter
+
+Installer les dépendances :
+
+npm install
+
+Développement
+
+Lancer le serveur de développement :
+
+npm start
+
+L'application sera disponible à http://localhost:4200/.
+
+Compilation
+
+Pour créer une version prête pour la production :
+
+npm run build
+
+La sortie sera générée dans le répertoire dist/.
+
+Tests
+
+Exécuter les tests unitaires avec Karma :
+
+npm test
+
+Docker
+
+Exécution avec Docker Compose
+
+docker-compose up --build
+
+Exécution d'une version de production
+
+docker build -t angular-saas-starter .
+docker run -p 4200:4200 angular-saas-starter
+
+Déploiement
+
+Pour le déploiement en CI/CD, configurez GitHub Actions ou un pipeline similaire. Un exemple de workflow est disponible dans .github/workflows/main.yml.
+
+Variables d'environnement
+
+Définissez les variables suivantes pour la production :
+
+NODE_ENV=production
+
+PORT=4000
+
+Contribution
+
+Les contributions sont les bienvenues ! Veuillez forker le dépôt, apporter vos modifications et soumettre une pull request.
+
+Licence
+
+Ce projet est sous licence MIT.
+
