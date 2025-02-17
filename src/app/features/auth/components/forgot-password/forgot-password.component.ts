@@ -36,11 +36,11 @@ export class ForgotPasswordComponent {
         this.authService.forgotPassword(this.forgotPasswordForm.get('email')?.value)
             .subscribe({
                 next: () => {
-                    this.success = 'Password reset instructions have been sent to your email.';
+                    this.success = 'Les instructions de réinitialisation du mot de passe ont été envoyées à votre email.';
                     this.isLoading = false;
                 },
                 error: (error) => {
-                    this.error = error.error || 'An error occurred while processing your request';
+                    this.error = error.error || 'Une erreur est survenue lors du traitement de votre demande';
                     this.isLoading = false;
                 }
             });
