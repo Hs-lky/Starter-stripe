@@ -27,11 +27,11 @@ export class FooterComponent implements OnInit {
   currentLanguage = 'English';
   
   languages = [
-    'English',
-    'French',
-    'Spanish',
-    'German',
-    'Chinese'
+    'Français',
+    'Anglais',
+    'Espagnol',
+    'Allemand',
+    'Chinois'
   ];
 
   socialLinks: SocialLink[] = [
@@ -39,51 +39,51 @@ export class FooterComponent implements OnInit {
       name: 'Twitter',
       url: 'https://twitter.com/yourcompany',
       icon: 'fab fa-twitter',
-      followers: '50K followers'
+      followers: '50K abonnés'
     },
     {
       name: 'LinkedIn',
       url: 'https://linkedin.com/company/yourcompany',
       icon: 'fab fa-linkedin',
-      followers: '100K followers'
+      followers: '100K abonnés'
     },
     {
       name: 'GitHub',
       url: 'https://github.com/yourcompany',
       icon: 'fab fa-github',
-      followers: '20K followers'
+      followers: '20K abonnés'
     },
     {
       name: 'Discord',
       url: 'https://discord.gg/yourcompany',
       icon: 'fab fa-discord',
-      followers: '30K members'
+      followers: '30K membres'
     }
   ];
 
   productLinks: FooterLink[] = [
     {
-      name: 'Features',
+      name: 'Fonctionnalités',
       url: '/features',
       icon: 'fas fa-star'
     },
     {
-      name: 'Pricing',
+      name: 'Tarifs',
       url: '/pricing',
       icon: 'fas fa-tag'
     },
     {
-      name: 'Integrations',
+      name: 'Intégrations',
       url: '/integrations',
       icon: 'fas fa-puzzle-piece'
     },
     {
-      name: 'Enterprise',
+      name: 'Entreprise',
       url: '/enterprise',
       icon: 'fas fa-building'
     },
     {
-      name: 'Security',
+      name: 'Sécurité',
       url: '/security',
       icon: 'fas fa-shield-alt'
     }
@@ -91,12 +91,12 @@ export class FooterComponent implements OnInit {
 
   companyLinks: FooterLink[] = [
     {
-      name: 'About Us',
+      name: 'À Propos',
       url: '/about',
       icon: 'fas fa-info-circle'
     },
     {
-      name: 'Careers',
+      name: 'Carrières',
       url: '/careers',
       icon: 'fas fa-briefcase'
     },
@@ -106,7 +106,7 @@ export class FooterComponent implements OnInit {
       icon: 'fas fa-rss'
     },
     {
-      name: 'Press',
+      name: 'Presse',
       url: '/press',
       icon: 'fas fa-newspaper'
     },
