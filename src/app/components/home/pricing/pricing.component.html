@@ -9,35 +9,34 @@
       <span class="inline-block text-primary-600 font-semibold mb-4 animate-slide-up">
         <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50">
           <i class="fas fa-tag text-primary-500"></i>
-          Simple Pricing
+          Tarification Simple
         </span>
       </span>
       
       <h2 class="text-3xl sm:text-4xl lg:text-display-2 font-bold text-gray-700 tracking-tight mb-6 animate-fade-in">
-        Choose the perfect plan for your
+        Choisissez le plan parfait pour votre
         <span class="relative inline-block">
           <span class="absolute inset-x-0 bottom-2 h-3 bg-primary-200 opacity-50"></span>
-          <span class="relative">business</span>
+          <span class="relative">entreprise</span>
         </span>
       </h2>
       <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-8 animate-fade-in">
-        Start with our free plan and upgrade as you grow. All plans include core features.
+        Commencez avec notre plan gratuit et évoluez selon vos besoins. Tous les plans incluent les fonctionnalités de base.
       </p>
 
-      <!-- Billing Toggle -->
-      <div class="flex items-center justify-center gap-4 mb-12">
-        <span class="text-gray-600 font-medium">Monthly</span>
-        <button class="relative w-16 h-8 rounded-full bg-primary-100 group transition-colors
-                     hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+      <!-- Toggle -->
+      <div class="flex justify-center items-center gap-4 mb-12">
+        <span class="text-gray-500">Mensuel</span>
+        <button class="relative w-16 h-8 bg-primary-100 rounded-full p-1 transition-colors duration-200
+                     focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                 [class.bg-primary-500]="isAnnual"
-                (click)="toggleBilling()"
-                aria-label="Toggle billing frequency">
-          <span class="absolute left-1 top-1 w-6 h-6 rounded-full bg-white shadow-md transform transition-transform duration-200"
+                (click)="isAnnual = !isAnnual">
+          <span class="absolute w-6 h-6 bg-white rounded-full shadow-sm transform transition-transform duration-200"
                 [class.translate-x-8]="isAnnual"></span>
         </button>
-        <span class="text-gray-600 font-medium">
-          Annual
-          <span class="inline-block ml-1 text-sm text-primary-500 font-semibold">Save 20%</span>
+        <span class="text-gray-500">Annuel</span>
+        <span class="inline-block px-3 py-1 bg-green-50 text-green-600 text-sm font-medium rounded-full">
+          Économisez 20%
         </span>
       </div>
     </div>
@@ -51,24 +50,24 @@
         <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-0 
                     group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="relative p-8">
-          <h3 class="text-xl font-semibold text-gray-700 mb-4">Free</h3>
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">Gratuit</h3>
           <div class="flex items-baseline mb-6">
-            <span class="text-4xl font-bold text-gray-900">$0</span>
-            <span class="text-gray-500 ml-2">/month</span>
+            <span class="text-4xl font-bold text-gray-900">0€</span>
+            <span class="text-gray-500 ml-2">/mois</span>
           </div>
           
           <ul class="space-y-4 mb-8">
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>Up to 5 users</span>
+              <span>Jusqu'à 5 utilisateurs</span>
             </li>
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>Basic analytics</span>
+              <span>Analytiques de base</span>
             </li>
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>1GB storage</span>
+              <span>1Go de stockage</span>
             </li>
           </ul>
           
@@ -76,7 +75,7 @@
                        border-2 border-primary-500 hover:bg-primary-50 group-hover:bg-primary-500 group-hover:text-white
                        transform transition-all duration-200
                        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-            Get Started
+            Commencer
           </button>
         </div>
       </div>
@@ -95,26 +94,26 @@
         <div class="relative p-8">
           <h3 class="text-xl font-semibold text-gray-700 mb-4">Pro</h3>
           <div class="flex items-baseline mb-6">
-            <span class="text-4xl font-bold text-gray-900">${{isAnnual ? '49' : '59'}}</span>
-            <span class="text-gray-500 ml-2">/month</span>
+            <span class="text-4xl font-bold text-gray-900">{{isAnnual ? '29' : '39'}}€</span>
+            <span class="text-gray-500 ml-2">/mois</span>
           </div>
           
           <ul class="space-y-4 mb-8">
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>Up to 20 users</span>
+              <span>Jusqu'à 20 utilisateurs</span>
             </li>
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>Advanced analytics</span>
+              <span>Analytiques avancées</span>
             </li>
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>10GB storage</span>
+              <span>10Go de stockage</span>
             </li>
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>Priority support</span>
+              <span>Support prioritaire</span>
             </li>
           </ul>
           
@@ -122,7 +121,7 @@
                        hover:bg-primary-600 transform transition-all duration-200
                        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
                        shadow-soft hover:shadow-hover">
-            Start Free Trial
+            Commencer l'essai
           </button>
         </div>
       </div>
@@ -134,32 +133,32 @@
         <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-0 
                     group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="relative p-8">
-          <h3 class="text-xl font-semibold text-gray-700 mb-4">Enterprise</h3>
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">Entreprise</h3>
           <div class="flex items-baseline mb-6">
-            <span class="text-4xl font-bold text-gray-900">${{isAnnual ? '99' : '119'}}</span>
-            <span class="text-gray-500 ml-2">/month</span>
+            <span class="text-4xl font-bold text-gray-900">{{isAnnual ? '99' : '119'}}€</span>
+            <span class="text-gray-500 ml-2">/mois</span>
           </div>
           
           <ul class="space-y-4 mb-8">
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>Unlimited users</span>
+              <span>Utilisateurs illimités</span>
             </li>
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>Custom analytics</span>
+              <span>Analytiques personnalisées</span>
             </li>
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>Unlimited storage</span>
+              <span>Stockage illimité</span>
             </li>
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>24/7 support</span>
+              <span>Support 24/7</span>
             </li>
             <li class="flex items-center gap-3 text-gray-600">
               <i class="fas fa-check text-primary-500 bg-primary-50 p-1 rounded-full"></i>
-              <span>Custom integrations</span>
+              <span>Intégrations personnalisées</span>
             </li>
           </ul>
           
@@ -167,7 +166,7 @@
                        border-2 border-primary-500 hover:bg-primary-50 group-hover:bg-primary-500 group-hover:text-white
                        transform transition-all duration-200
                        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-            Contact Sales
+            Contacter les Ventes
           </button>
         </div>
       </div>
@@ -239,8 +238,8 @@
           </span>
         </span>
         
-        <h3 class="text-2xl sm:text-3xl font-bold text-gray-700 mb-4">Frequently Asked Questions</h3>
-        <p class="text-gray-500">Have questions? We're here to help.</p>
+        <h3 class="text-2xl sm:text-3xl font-bold text-gray-700 mb-4">Questions Fréquentes</h3>
+        <p class="text-gray-500">Vous avez des questions ? Nous sommes là pour vous aider.</p>
       </div>
       
       <div class="space-y-4">
