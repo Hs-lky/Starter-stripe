@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  angular-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: angular-saas-frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: npm start -- --host 0.0.0.0 
