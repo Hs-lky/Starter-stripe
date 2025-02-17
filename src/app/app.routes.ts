@@ -4,6 +4,7 @@ import { UserManagementComponent } from './components/dashboard/users/user-manag
 import { SubscriptionGuard } from './core/guards/subscription.guard';
 import { SubscriptionSuccessComponent } from './components/dashboard/subscriptions/subscription-success.component';
 import { SubscriptionCancelComponent } from './components/dashboard/subscriptions/subscription-cancel.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 // Routes
 import { HomeComponent } from './pages/home/home.component';
@@ -21,6 +22,8 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardLayoutComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
