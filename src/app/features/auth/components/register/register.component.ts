@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
                     });
                 },
                 error: (error) => {
-                    this.error = error.error || 'An error occurred during registration';
+                    this.error = error.error || 'Une erreur est survenue lors de l\'inscription';
                     this.isLoading = false;
                 }
             });

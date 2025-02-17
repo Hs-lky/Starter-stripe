@@ -11,17 +11,17 @@
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
                         </span>
-                        Start Your Journey
+                        Commencez Votre Voyage
                     </span>
                 </div>
             </div>
             <h2 class="mt-6 text-center text-4xl font-bold text-gray-700 tracking-tight">
-                Create your account
+                Créez votre compte
             </h2>
             <p class="mt-4 text-center text-gray-500">
-                Already have an account?
+                Vous avez déjà un compte ?
                 <a routerLink="/auth/login" class="font-medium text-primary-500 hover:text-primary-600 transition-colors">
-                    Sign in
+                    Connectez-vous
                 </a>
             </p>
         </div>
@@ -29,28 +29,36 @@
         <form class="mt-8 space-y-6 animate-slide-up" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="space-y-4">
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                    <input id="name" type="text" formControlName="name" required
+                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">Prénom</label>
+                    <input id="firstName" type="text" formControlName="firstName" required
                         class="appearance-none relative block w-full px-4 py-3 border border-gray-300 rounded-xl 
                                placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 
                                focus:border-primary-500 transition-all duration-200 sm:text-sm"
-                        placeholder="Enter your full name">
+                        placeholder="Entrez votre prénom">
                 </div>
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
+                    <input id="lastName" type="text" formControlName="lastName" required
+                        class="appearance-none relative block w-full px-4 py-3 border border-gray-300 rounded-xl 
+                               placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 
+                               focus:border-primary-500 transition-all duration-200 sm:text-sm"
+                        placeholder="Entrez votre nom">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Adresse email</label>
                     <input id="email" type="email" formControlName="email" required
                         class="appearance-none relative block w-full px-4 py-3 border border-gray-300 rounded-xl 
                                placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 
                                focus:border-primary-500 transition-all duration-200 sm:text-sm"
-                        placeholder="Enter your email">
+                        placeholder="Entrez votre email">
                 </div>
                 <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
                     <input id="password" type="password" formControlName="password" required
                         class="appearance-none relative block w-full px-4 py-3 border border-gray-300 rounded-xl 
                                placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 
                                focus:border-primary-500 transition-all duration-200 sm:text-sm"
-                        placeholder="Create a password">
+                        placeholder="Entrez votre mot de passe">
                 </div>
             </div>
 
@@ -72,7 +80,7 @@
                            focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 transform hover:-translate-y-1 
                            transition-all duration-200 shadow-soft hover:shadow-hover">
                     <span class="flex items-center gap-2">
-                        {{ isLoading ? 'Creating account...' : 'Create account' }}
+                        {{ isLoading ? 'Inscription en cours...' : 'S\'inscrire' }}
                         <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
                     </span>
                 </button>
