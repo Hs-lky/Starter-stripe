@@ -107,4 +107,12 @@ export class AuthService {
         if (!this.isBrowser) return null;
         return localStorage.getItem('token');
     }
+
+    isAuthenticated(): boolean {
+        if (!this.isBrowser) {
+            return false; // Return false when running on server
+        }
+        const token = localStorage.getItem('token');
+        return !!token;
+    }
 } 
