@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SubscriptionService } from '../../../core/services/subscription.service';
 
@@ -56,26 +56,44 @@ import { SubscriptionService } from '../../../core/services/subscription.service
   `
 })
 export class SubscriptionSuccessComponent implements OnInit {
+  private isBrowser: boolean;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private subscriptionService: SubscriptionService
-  ) {}
+    private subscriptionService: SubscriptionService,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit() {
-    // Get the session_id from URL params
+    if (!this.isBrowser) {
+      return; // Don't process on server side
+    }
+
     const sessionId = this.route.snapshot.queryParamMap.get('session_id');
     if (sessionId) {
-      // You can add logic here to verify the session with your backend if needed
-      console.log('Stripe session ID:', sessionId);
+      this.subscriptionService.activateSubscription(sessionId).subscribe({
+        next: () => {
+          console.log('Subscription activated successfully');
+        },
+        error: (error) => {
+          console.error('Error activating subscription:', error);
+        }
+      });
     }
   }
 
   goToSubscriptions() {
-    this.router.navigate(['/dashboard/subscription']);
+    if (this.isBrowser) {
+      this.router.navigate(['/dashboard/subscriptions']);
+    }
   }
 
   goToDashboard() {
-    this.router.navigate(['/dashboard']);
+    if (this.isBrowser) {
+      this.router.navigate(['/dashboard']);
+    }
   }
 } 
