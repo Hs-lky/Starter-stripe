@@ -94,4 +94,10 @@ export class SubscriptionService {
     };
     return prices[plan] || 0;
   }
+
+  activateSubscription(sessionId: string): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/activate`, null, {
+      params: { sessionId }
+    });
+  }
 } 
