@@ -52,14 +52,14 @@ export class ResetPasswordComponent implements OnInit {
         this.authService.resetPassword(this.token, this.resetPasswordForm.get('password')?.value)
             .subscribe({
                 next: () => {
-                    this.success = 'Your password has been reset successfully.';
+                    this.success = 'Votre mot de passe a été réinitialisé avec succès.';
                     this.isLoading = false;
                     setTimeout(() => {
                         this.router.navigate(['/auth/login']);
                     }, 3000);
                 },
                 error: (error) => {
-                    this.error = error.error || 'An error occurred while resetting your password';
+                    this.error = error.error || 'Une erreur est survenue lors de la réinitialisation de votre mot de passe';
                     this.isLoading = false;
                 }
             });
