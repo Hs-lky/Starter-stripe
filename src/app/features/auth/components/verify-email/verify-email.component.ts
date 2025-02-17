@@ -41,14 +41,14 @@ export class VerifyEmailComponent implements OnInit {
         this.authService.verifyEmail(this.token)
             .subscribe({
                 next: () => {
-                    this.success = 'Email verified successfully. You can now log in.';
+                    this.success = 'Email vérifié avec succès. Vous pouvez maintenant vous connecter.';
                     this.isLoading = false;
                     setTimeout(() => {
                         this.router.navigate(['/auth/login']);
                     }, 3000);
                 },
                 error: (error) => {
-                    this.error = error.error || 'An error occurred while verifying your email';
+                    this.error = error.error || 'Une erreur est survenue lors de la vérification de votre email';
                     this.isLoading = false;
                 }
             });
@@ -66,11 +66,11 @@ export class VerifyEmailComponent implements OnInit {
         this.authService.resendVerificationEmail(this.email)
             .subscribe({
                 next: () => {
-                    this.success = 'Verification email has been resent. Please check your inbox.';
+                    this.success = 'L\'email de vérification a été renvoyé. Veuillez vérifier votre boîte de réception.';
                     this.isLoading = false;
                 },
                 error: (error) => {
-                    this.error = error.error || 'An error occurred while resending verification email';
+                    this.error = error.error || 'Une erreur est survenue lors du renvoi de l\'email de vérification';
                     this.isLoading = false;
                 }
             });
