@@ -12,9 +12,9 @@ import { Company } from '../../../models/company';
 })
 export class HeroComponent {
   features: string[] = [
-    'Easy Integration',
-    'Modern Design',
-    'Secure Platform'
+    'Intégration Facile',
+    'Design Moderne',
+    'Plateforme Sécurisée'
   ];
 
   companies: Company[] = [
