@@ -43,5 +43,9 @@ export const appConfig: ApplicationConfig = {
         }
       ])
     ),
+    {
+      provide: 'FONT_LOADING_STRATEGY',
+      useValue: 'swap' // or 'block' or 'optional'
+    }
   ],
 };
