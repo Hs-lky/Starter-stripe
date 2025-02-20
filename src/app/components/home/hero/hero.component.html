@@ -89,10 +89,10 @@
             <img
               [ngSrc]="company.src"
               [alt]="company.name"
-              width="120"
-              height="55"
+              [width]="getImageWidth(company.name)"
+              [height]="getImageHeight(company.name)"
+              priority
               class="object-contain relative z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
-              loading="lazy"
             />
           </div>
         }
