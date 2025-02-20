@@ -179,6 +179,19 @@ export class SubscriptionManagementComponent implements OnInit, OnDestroy {
       });
   }
 
+  updatePaymentDetails() {
+    this.subscriptionService.updatePaymentDetails()
+      .subscribe({
+        next: (response) => {
+          // Redirect to Stripe's Customer Portal
+          window.location.href = response.portalUrl;
+        },
+        error: (error) => {
+          console.error('Error creating portal session:', error);
+          // Handle error appropriately
+        }
+      });
+  }
   getSubscriptionBadgeClass(status: string): string {
     const baseClasses = 'bg-opacity-10 ';
     switch (status) {
