@@ -100,4 +100,8 @@ export class SubscriptionService {
       params: { sessionId }
     });
   }
+
+  updatePaymentDetails(): Observable<{portalUrl: string}> {
+    return this.http.post<{portalUrl: string}>(`${this.apiUrl}/create-portal-session`, {});
+  }
 } 
