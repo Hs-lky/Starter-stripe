@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { UserResponse, User } from '../models/user.model';
- 
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,10 @@ import { UserResponse, User } from '../models/user.model';
 export class UserService {
   private apiUrl = `${environment.apiUrl}/profile`;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   getUsers(page: number = 0, size: number = 20, search?: string, role?: string, status?: string): Observable<UserResponse> {
     const params = new URLSearchParams({
@@ -44,5 +47,19 @@ export class UserService {
       newPassword,
       confirmPassword
     });
+  }
+
+  logout(): void {
+    // Clear the stored token
+    localStorage.removeItem('token');
+    
+    // Clear any other user-related data from storage
+    localStorage.removeItem('user');
+    
+    // Navigate to landing page and reload the page
+    this.router.navigate(['/'])
+      .then(() => {
+        window.location.reload();
+      });
   }
 } 
