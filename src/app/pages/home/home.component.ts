@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 // Components
 import { NavbarComponent } from '../../components/home/navbar/navbar.component';
@@ -28,6 +29,8 @@ interface TrustCompany {
   styleUrl: './home.component.sass',
 })
 export class HomeComponent {
+  constructor(private router: Router) {}
+
   trustCompanies: TrustCompany[] = [
     {
       name: 'Microsoft',
@@ -46,4 +49,8 @@ export class HomeComponent {
       logo: '../../../../assets/logos/apple.svg'
     }
   ];
+
+  navigateToLogin() {
+    this.router.navigate(['/auth/auth/login']);
+  }
 }
