@@ -16,8 +16,8 @@
       </ul>
     </nav>
     <div class="hidden md:flex items-center gap-2">
-      <div class="m-button-outline text-sm !px-4"  routerLink="/auth/auth/login" >Se Connecter</div>
-      <div class="m-button-solid text-sm !px-4" routerLink="/auth/auth/register" >Commencer</div>
+      <a class="m-button-outline text-sm !px-4 cursor-pointer" [routerLink]="['/auth/auth/login']">Se Connecter</a>
+      <a class="m-button-solid text-sm !px-4 cursor-pointer" [routerLink]="['/auth/auth/register']">Commencer</a>
     </div>
     <div
       (click)="toggleMenu()"
@@ -40,8 +40,8 @@
         </ul>
       </nav>
       <div class="flex flex-col items-center gap-2">
-        <div class="m-button-outline !w-[250px] !py-2">Se Connecter</div>
-        <div class="m-button-solid !w-[250px] !py-2">Commencer</div>
+        <a class="m-button-outline !w-[250px] !py-2 cursor-pointer" [routerLink]="['/auth/auth/login']">Se Connecter</a>
+        <a class="m-button-solid !w-[250px] !py-2 cursor-pointer" [routerLink]="['/auth/auth/register']">Commencer</a>
       </div>
     </div>
   </div>
