@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { UserService } from '../../../core/services/user.service';
 
 interface MenuItem {
   icon: string;
@@ -100,7 +101,8 @@ interface MenuItem {
                         Paramétres
                       </a>
                       <hr class="my-1 border-gray-100">
-                      <a href="#" class="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                      <a class="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 cursor-pointer"
+                         (click)="onLogout()">
                         <i class="fas fa-sign-out-alt"></i>
                         Déconnexion
                       </a>
@@ -153,11 +155,18 @@ export class DashboardLayoutComponent {
     }
   ];
 
+  constructor(private userService: UserService) {}
+
   toggleProfileMenu() {
     this.isProfileMenuOpen = !this.isProfileMenuOpen;
   }
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  onLogout(): void {
+    this.isProfileMenuOpen = false;
+    this.userService.logout();
   }
 } 
