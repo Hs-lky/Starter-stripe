@@ -1,109 +1,99 @@
-<div class="min-h-screen bg-gray-50/50 p-4 lg:p-8">
-  <!-- Header with Gradient Background -->
-  <div class="relative mb-8 bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-8 overflow-hidden">
-    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
-    <div class="relative">
-      <h1 class="text-2xl lg:text-3xl font-bold text-white mb-2">
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100/80 p-4 lg:p-8 font-sans antialiased">
+  <!-- Enhanced Header with Dynamic Gradient -->
+  <div class="max-w-8xl mx-auto">
+    
+  <div class="relative mb-8 bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 rounded-3xl p-8 lg:p-10 overflow-hidden shadow-xl transform hover:scale-[1.01] transition-transform duration-300">
+    <div class="absolute inset-0 bg-grid-pattern opacity-10 animate-pulse-slow"></div>
+    <div class="relative z-10">
+      <h1 class="text-2xl lg:text-3xl font-extrabold text-white mb-3 tracking-tight">
         {{currentSubscription ? 'Gestion des Abonnements' : 'Choisissez Votre Plan'}}
       </h1>
-      <p class="text-primary-100">
+      <p class="text-primary-100 text-lg font-medium opacity-90">
         {{currentSubscription ? 'Gérez votre plan d\'abonnement et vos détails de facturation' : 'Sélectionnez le plan qui correspond le mieux à vos besoins'}}
       </p>
     </div>
   </div>
 
-  <!-- Content Grid -->
+  <!-- Enhanced Content Grid with Better Spacing -->
   <div *ngIf="currentSubscription" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <!-- Current Subscription -->
-    <div class="lg:col-span-2 space-y-8">
-      <!-- Current Plan Card -->
-      <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-        <div class="border-b border-gray-100 px-8 py-6">
-          <h2 class="text-xl font-semibold text-gray-900">Plan Actuel</h2>
-          <p class="text-sm text-gray-500 mt-1">Détails de votre abonnement actif</p>
+    <!-- Current Subscription with Improved Card Design -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Current Plan Card with Enhanced Styling -->
+      <div class="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+        <div class="border-b border-gray-100 px-8 py-6 bg-gradient-to-r from-gray-50 to-white">
+          <h2 class="text-2xl font-bold text-gray-900">Plan Actuel</h2>
+          <p class="text-base text-gray-600 mt-1">Détails de votre abonnement actif</p>
         </div>
         
         <div class="p-8">
           <div class="space-y-8">
-            <!-- Plan Header -->
+            <!-- Enhanced Plan Header -->
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <h3 class="text-2xl font-bold text-gray-900">{{currentSubscription.plan}}</h3>
-                <p class="text-gray-500 mt-1">{{getSubscriptionDescription(currentSubscription.plan)}}</p>
+                <h3 class="text-3xl font-bold text-gray-900 tracking-tight">{{currentSubscription.plan}}</h3>
+                <p class="text-gray-600 mt-2 text-lg">{{getSubscriptionDescription(currentSubscription.plan)}}</p>
               </div>
-              <span class="inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold"
+              <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold shadow-sm"
                     [class]="getSubscriptionBadgeClass(currentSubscription.status)">
-                <i class="fas fa-circle text-xs mr-2"></i>
+                <i class="fas fa-circle text-xs mr-2 animate-pulse"></i>
                 {{currentSubscription.status}}
               </span>
             </div>
 
-            <!-- Billing Info -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-gray-50 rounded-xl">
-              <div>
-                <p class="text-sm font-medium text-gray-500">Montant Mensuel</p>
-                <p class="mt-2 flex items-baseline">
-                  <span class="text-3xl font-bold tracking-tight text-gray-900">
+            <!-- Enhanced Billing Info -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-8 bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-100">
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider">Montant Mensuel</p>
+                <p class="mt-3 flex items-baseline">
+                  <span class="text-4xl font-bold tracking-tight text-gray-900">
                     {{currentSubscription.amount | currency:currentSubscription.currency}}
                   </span>
-                  <span class="ml-1 text-sm text-gray-500">/mois</span>
+                  <span class="ml-2 text-gray-500">/mois</span>
                 </p>
               </div>
-              <div>
-                <p class="text-sm font-medium text-gray-500">Période Actuelle</p>
-                <p class="mt-2 text-sm text-gray-900">
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider">Période Actuelle</p>
+                <p class="mt-3 text-base text-gray-900">
                   {{currentSubscription.currentPeriodStart | date:'mediumDate'}} -
                   {{currentSubscription.currentPeriodEnd | date:'mediumDate'}}
                 </p>
               </div>
-              <div>
-                <p class="text-sm font-medium text-gray-500">Prochaine Date de Facturation</p>
-                <p class="mt-2 text-sm text-gray-900">
+              <div class="transform hover:scale-105 transition-transform duration-300">
+                <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider">Prochaine Facturation</p>
+                <p class="mt-3 text-base text-gray-900">
                   {{currentSubscription.currentPeriodEnd | date:'mediumDate'}}
                 </p>
               </div>
             </div>
 
-            <!-- Features -->
-            <div>
-              <h4 class="text-base font-semibold text-gray-900 mb-4">Fonctionnalités du Plan</h4>
-              <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <li *ngFor="let feature of getSubscriptionFeatures(currentSubscription.plan)" class="flex items-start">
-                  <div class="flex-shrink-0 h-5 w-5 text-primary-500">
-                    <i class="fas fa-check-circle"></i>
-                  </div>
-                  <p class="ml-3 text-sm text-gray-700">{{feature}}</p>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Actions -->
-            <div *ngIf="currentSubscription.status === 'ACTIVE'" class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
-              <button (click)="showUpgradeOptions = true"
-                      class="inline-flex items-center justify-center px-5 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200">
-                <i class="fas fa-arrow-up mr-2"></i>
-                Change Plan
-              </button>
-              <button class="inline-flex items-center justify-center px-5 py-3 border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all duration-200"
-              (click)="updatePaymentDetails()">
-                <i class="fas fa-credit-card mr-2"></i>
-                Update Billing
+            <!-- Enhanced Actions -->
+            <div *ngIf="currentSubscription.status === 'ACTIVE'" 
+                 class="flex justify-end pt-6 border-t border-gray-200">
+              <button (click)="updatePaymentDetails()"
+                      type="button"
+                      class="inline-flex items-center justify-center px-6 py-4 bg-primary-600 text-white rounded-xl font-medium
+                             hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 
+                             transition-all duration-200 hover:shadow-lg gap-2">
+                <i class="fas fa-cog"></i>
+                Gérer l'Abonnement
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Upgrade Options -->
-      <div *ngIf="showUpgradeOptions" class="bg-white rounded-2xl shadow-sm overflow-hidden">
-        <div class="border-b border-gray-100 px-8 py-6">
+      <!-- Enhanced Upgrade Options -->
+      <!-- <div *ngIf="showUpgradeOptions" 
+           class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 animate-fade-in">
+        <div class="border-b border-gray-100 px-8 py-6 bg-gradient-to-r from-gray-50 to-white">
           <div class="flex justify-between items-center">
             <div>
-              <h2 class="text-xl font-semibold text-gray-900">Plans Disponibles</h2>
-              <p class="text-sm text-gray-500 mt-1">Sélectionnez un nouveau plan pour mettre à niveau ou rétrograder</p>
+              <h2 class="text-2xl font-bold text-gray-900">Plans Disponibles</h2>
+              <p class="text-base text-gray-600 mt-1">Sélectionnez un nouveau plan pour mettre à niveau ou rétrograder</p>
             </div>
-            <button (click)="showUpgradeOptions = false" class="text-gray-400 hover:text-gray-500">
-              <i class="fas fa-times"></i>
+            <button (click)="showUpgradeOptions = false" 
+                    class="text-gray-400 hover:text-gray-600 transition-colors duration-200">
+              <i class="fas fa-times text-xl"></i>
             </button>
           </div>
         </div>
@@ -111,130 +101,167 @@
         <div class="p-8">
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             <div *ngFor="let plan of getAvailablePlans()" 
-                 class="relative bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+                 class="relative bg-white border-2 border-gray-200 rounded-2xl overflow-hidden 
+                        transition-all duration-300 hover:border-primary-500 hover:shadow-xl transform hover:-translate-y-1"
                  [class.ring-2]="plan.recommended"
                  [class.ring-primary-500]="plan.recommended">
-              <div *ngIf="plan.recommended" class="absolute top-0 right-0 bg-primary-500 text-white px-4 py-1 rounded-bl-xl text-sm font-medium">
+              <div *ngIf="plan.recommended" 
+                   class="absolute top-0 right-0 bg-primary-500 text-white px-6 py-2 rounded-bl-2xl text-sm font-bold
+                          shadow-md transform rotate-0 hover:rotate-3 transition-transform duration-300">
                 Recommandé
               </div>
               
-              <div class="p-6">
-                <h3 class="text-xl font-bold text-gray-900">{{plan.name}}</h3>
-                <p class="text-gray-500 mt-2">{{getSubscriptionDescription(plan.name)}}</p>
+              <div class="p-8">
+                <h3 class="text-2xl font-bold text-gray-900">{{plan.name}}</h3>
+                <p class="text-gray-600 mt-3">{{getSubscriptionDescription(plan.name)}}</p>
                 
-                <div class="mt-4 flex items-baseline">
-                  <span class="text-3xl font-bold text-gray-900">${{getSubscriptionPrice(plan.name)}}</span>
-                  <span class="ml-2 text-gray-500">/mois</span>
+                <div class="mt-6 flex items-baseline">
+                  <span class="text-4xl font-bold text-gray-900">${{getSubscriptionPrice(plan.name)}}</span>
+                  <span class="ml-2 text-gray-600">/mois</span>
                 </div>
 
-                <ul class="mt-6 space-y-3">
-                  <li *ngFor="let feature of getSubscriptionFeatures(plan.name)" class="flex items-start">
-                    <div class="flex-shrink-0 h-5 w-5 text-primary-500">
-                      <i class="fas fa-check-circle"></i>
+                <ul class="mt-8 space-y-4">
+                  <li *ngFor="let feature of getSubscriptionFeatures(plan.name)" 
+                      class="flex items-start p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                    <div class="flex-shrink-0 h-6 w-6 text-primary-500">
+                      <i class="fas fa-check-circle text-lg"></i>
                     </div>
-                    <p class="ml-3 text-sm text-gray-700">{{feature}}</p>
+                    <p class="ml-3 text-base text-gray-700">{{feature}}</p>
                   </li>
                 </ul>
 
                 <button (click)="startSubscription(plan.name)"
                         [disabled]="plan.name === currentSubscription.plan"
-                        class="mt-6 w-full inline-flex items-center justify-center px-5 py-3 rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                        class="mt-8 w-full inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium 
+                               transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 
+                               focus:ring-offset-2 shadow-md hover:shadow-xl"
                         [class.bg-primary-600]="plan.recommended && plan.name !== currentSubscription.plan"
                         [class.text-white]="plan.recommended && plan.name !== currentSubscription.plan"
                         [class.hover:bg-primary-700]="plan.recommended && plan.name !== currentSubscription.plan"
                         [class.focus:ring-primary-500]="plan.recommended && plan.name !== currentSubscription.plan"
-                        [class.border]="!plan.recommended || plan.name === currentSubscription.plan"
+                        [class.border-2]="!plan.recommended || plan.name === currentSubscription.plan"
                         [class.border-gray-300]="!plan.recommended || plan.name === currentSubscription.plan"
                         [class.text-gray-700]="!plan.recommended || plan.name === currentSubscription.plan"
                         [class.hover:bg-gray-50]="!plan.recommended && plan.name !== currentSubscription.plan"
                         [class.focus:ring-gray-500]="!plan.recommended && plan.name !== currentSubscription.plan"
                         [class.opacity-50]="plan.name === currentSubscription.plan"
                         [class.cursor-not-allowed]="plan.name === currentSubscription.plan">
-                  <i class="fas" [class.fa-arrow-right]="plan.name !== currentSubscription.plan" [class.fa-check]="plan.name === currentSubscription.plan" class="mr-2"></i>
+                  <i class="fas" [class.fa-arrow-right]="plan.name !== currentSubscription.plan" 
+                     [class.fa-check]="plan.name === currentSubscription.plan" class="mr-2"></i>
                   {{plan.name === currentSubscription.plan ? 'Plan Actuel' : 'Passer à ' + plan.name}}
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
-    <!-- Subscription History -->
-    <div>
-      <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-        <div class="border-b border-gray-100 px-6 py-4">
-          <h2 class="text-lg font-semibold text-gray-900">Historique de Facturation</h2>
+    <!-- Right Column -->
+    <div class="space-y-6">
+      <!-- Enhanced Features Card -->
+      <div class="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+        <div class="border-b border-gray-100 px-6 py-5 bg-gradient-to-r from-gray-50 to-white">
+          <h2 class="text-xl font-bold text-gray-900">Fonctionnalités du Plan</h2>
+        </div>
+        <div class="p-6">
+          <ul class="space-y-4">
+            <li *ngFor="let feature of getSubscriptionFeatures(currentSubscription.plan)" 
+                class="flex items-start p-3 rounded-xl hover:bg-gray-50 transition-colors duration-200">
+              <div class="flex-shrink-0 h-6 w-6 text-primary-500">
+                <i class="fas fa-check-circle text-lg"></i>
+              </div>
+              <p class="ml-3 text-base text-gray-700">{{feature}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Enhanced Subscription History -->
+      <div class="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
+        <div class="border-b border-gray-100 px-6 py-5 bg-gradient-to-r from-gray-50 to-white">
+          <h2 class="text-xl font-bold text-gray-900">Historique de Facturation</h2>
         </div>
         
         <div *ngIf="subscriptionHistory.length > 0" class="divide-y divide-gray-100">
-          <div *ngFor="let subscription of subscriptionHistory" class="p-6 hover:bg-gray-50 transition-colors duration-200">
+          <div *ngFor="let subscription of subscriptionHistory" 
+               class="p-6 hover:bg-gray-50 transition-all duration-200 transform hover:scale-[1.02]">
             <div class="flex items-start justify-between">
-              <div class="space-y-1">
-                <p class="font-medium text-gray-900">{{subscription.plan}}</p>
-                <p class="text-sm text-gray-500">
+              <div class="space-y-2">
+                <p class="font-bold text-gray-900">{{subscription.plan}}</p>
+                <p class="text-sm text-gray-600">
                   {{subscription.currentPeriodStart | date:'mediumDate'}} -
                   {{subscription.currentPeriodEnd | date:'mediumDate'}}
                 </p>
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mt-2"
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold shadow-sm"
                       [class]="getSubscriptionBadgeClass(subscription.status)">
                   {{subscription.status}}
                 </span>
               </div>
               <div class="text-right">
-                <p class="font-medium text-gray-900">
+                <p class="font-bold text-gray-900 text-lg">
                   {{subscription.amount | currency:subscription.currency}}
                 </p>
-                <p *ngIf="subscription.canceledAt" class="text-sm text-gray-500 mt-1">
-                  <i class="fas fa-times-circle mr-1"></i>
+                <p *ngIf="subscription.canceledAt" class="text-sm text-gray-500 mt-2 flex items-center justify-end">
+                  <i class="fas fa-times-circle mr-2 text-red-500"></i>
                   Annulé le: {{subscription.canceledAt | date:'mediumDate'}}
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div *ngIf="subscriptionHistory.length === 0" class="p-6 text-center">
-          <p class="text-gray-500">Aucun historique d'abonnement disponible</p>
+        <div *ngIf="subscriptionHistory.length === 0" class="p-8 text-center">
+          <div class="text-gray-400">
+            <i class="fas fa-history text-4xl mb-4"></i>
+            <p class="text-gray-600">Aucun historique d'abonnement disponible</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Plan Selection (when no subscription) -->
-  <div *ngIf="!currentSubscription" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-7xl mx-auto">
+  <!-- Enhanced Plan Selection -->
+  <div *ngIf="!currentSubscription" 
+       class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
     <div *ngFor="let plan of availablePlans" 
-         class="relative bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-200 hover:border-primary-500 hover:shadow-lg"
+         class="relative bg-white border-2 border-gray-200 rounded-3xl overflow-hidden 
+                transition-all duration-300 hover:border-primary-500 hover:shadow-xl transform hover:-translate-y-2"
          [class.ring-2]="plan.recommended"
          [class.ring-primary-500]="plan.recommended">
-      <div *ngIf="plan.recommended" class="absolute top-0 right-0 bg-primary-500 text-white px-4 py-1 rounded-bl-xl text-sm font-medium">
+      <div *ngIf="plan.recommended" 
+           class="absolute top-0 right-0 bg-primary-500 text-white px-6 py-2 rounded-bl-2xl text-sm font-bold
+                  shadow-md transform rotate-0 hover:rotate-3 transition-transform duration-300">
         Recommandé
       </div>
       
-      <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-900">{{plan.name}}</h3>
-        <p class="text-gray-500 mt-2">{{getSubscriptionDescription(plan.name)}}</p>
+      <div class="p-8">
+        <h3 class="text-2xl font-bold text-gray-900">{{plan.name}}</h3>
+        <p class="text-gray-600 mt-3 text-lg">{{getSubscriptionDescription(plan.name)}}</p>
         
-        <div class="mt-4 flex items-baseline">
-          <span class="text-3xl font-bold text-gray-900">${{getSubscriptionPrice(plan.name)}}</span>
-          <span class="ml-2 text-gray-500">/mois</span>
+        <div class="mt-6 flex items-baseline">
+          <span class="text-5xl font-bold text-gray-900">${{getSubscriptionPrice(plan.name)}}</span>
+          <span class="ml-2 text-gray-600 text-lg">/mois</span>
         </div>
 
-        <ul class="mt-6 space-y-3">
-          <li *ngFor="let feature of getSubscriptionFeatures(plan.name)" class="flex items-start">
-            <div class="flex-shrink-0 h-5 w-5 text-primary-500">
-              <i class="fas fa-check-circle"></i>
+        <ul class="mt-8 space-y-4">
+          <li *ngFor="let feature of getSubscriptionFeatures(plan.name)" 
+              class="flex items-start p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+            <div class="flex-shrink-0 h-6 w-6 text-primary-500">
+              <i class="fas fa-check-circle text-lg"></i>
             </div>
-            <p class="ml-3 text-sm text-gray-700">{{feature}}</p>
+            <p class="ml-3 text-base text-gray-700">{{feature}}</p>
           </li>
         </ul>
 
         <button (click)="startSubscription(plan.name)"
-                class="mt-6 w-full inline-flex items-center justify-center px-5 py-3 rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                class="mt-8 w-full inline-flex items-center justify-center px-6 py-4 rounded-xl font-medium 
+                       transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 
+                       focus:ring-offset-2 shadow-md hover:shadow-xl text-lg"
                 [class.bg-primary-600]="plan.recommended"
                 [class.text-white]="plan.recommended"
                 [class.hover:bg-primary-700]="plan.recommended"
                 [class.focus:ring-primary-500]="plan.recommended"
-                [class.border]="!plan.recommended"
+                [class.border-2]="!plan.recommended"
                 [class.border-gray-300]="!plan.recommended"
                 [class.text-gray-700]="!plan.recommended"
                 [class.hover:bg-gray-50]="!plan.recommended"
@@ -246,12 +273,21 @@
     </div>
   </div>
 
-  <!-- Loading Overlay -->
-  <div *ngIf="isLoading" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-2xl p-6 flex flex-col items-center max-w-sm mx-4">
-      <div class="animate-spin rounded-full h-12 w-12 border-4 border-primary-500 border-t-transparent mb-4"></div>
-      <p class="text-gray-900 font-medium">Traitement de votre demande...</p>
-      <p class="text-gray-500 text-sm text-center mt-2">Vous serez redirigé vers la page de paiement sécurisée sous peu.</p>
+  <!-- Enhanced Loading Overlay -->
+  <div *ngIf="isLoading" 
+       class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 
+              transition-opacity duration-300">
+    <div class="bg-white rounded-3xl p-8 flex flex-col items-center max-w-sm mx-4 
+                shadow-2xl transform scale-100 animate-bounce-in">
+      <div class="animate-spin rounded-full h-16 w-16 border-4 border-primary-500 border-t-transparent mb-6"></div>
+      <p class="text-xl font-bold text-gray-900">Traitement de votre demande...</p>
+      <p class="text-gray-600 text-center mt-3">
+        Vous serez redirigé vers la page de paiement sécurisée sous peu.
+      </p>
     </div>
   </div>
+
+  </div>
 </div> 
+
+ 
