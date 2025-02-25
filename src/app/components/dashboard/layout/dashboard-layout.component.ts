@@ -16,15 +16,13 @@ interface MenuItem {
   imports: [CommonModule, RouterLink, RouterOutlet],
   template: `
     <div class="min-h-screen bg-gray-50">
-      <!-- Sidebar -->
-      <aside class="fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200 z-30">
+      <!-- Sidebar - can be completely hidden -->
+      <aside class="fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200 z-30 transition-all duration-300 ease-in-out"
+             [class.translate-x-0]="isSidebarOpen"
+             [class.-translate-x-full]="!isSidebarOpen">
         <!-- Logo -->
         <div class="h-16 flex items-center justify-between px-4 border-b border-gray-200">
           <img src="assets/logo.svg" alt="Logo" class="h-8 w-auto">
-          <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100"
-                  (click)="toggleSidebar()">
-            <i class="fas fa-times"></i>
-          </button>
         </div>
 
         <!-- Navigation -->
@@ -46,27 +44,20 @@ interface MenuItem {
         </nav>
       </aside>
 
-      <!-- Main Content -->
-      <div class="lg:pl-64">
+      <!-- Main Content - adjusts width based on sidebar state -->
+      <div class="transition-all duration-300 ease-in-out"
+           [class.pl-64]="isSidebarOpen"
+           [class.pl-0]="!isSidebarOpen">
         <!-- Header -->
-        <header class="h-16 bg-white border-b border-gray-200 fixed top-0 right-0 left-0 lg:left-64 z-20">
+        <header class="h-16 bg-white border-b border-gray-200 fixed top-0 right-0 left-0 z-20 transition-all duration-300"
+                [class.left-64]="isSidebarOpen"
+                [class.left-0]="!isSidebarOpen">
           <div class="h-full px-4 flex items-center justify-between">
-            <!-- Mobile Menu Button -->
-            <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100"
+            <!-- Toggle Button -->
+            <button class="p-2 rounded-lg hover:bg-gray-100 transition-all duration-200"
                     (click)="toggleSidebar()">
-              <i class="fas fa-bars"></i>
+              <i class="fas fa-bars text-gray-600"></i>
             </button>
-
-            <!-- Search -->
-            <div class="hidden sm:flex items-center flex-1 px-4 max-w-xl">
-              <div class="relative w-full">
-                <input type="text" 
-                       placeholder="Search..."
-                       class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg
-                              focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
-                <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-              </div>
-            </div>
 
             <!-- Right Actions -->
             <div class="flex items-center gap-4">
@@ -83,14 +74,12 @@ interface MenuItem {
                   <img src="assets/avatar.jpg" 
                        alt="Profile" 
                        class="w-8 h-8 rounded-full">
-                  <!-- <span class="hidden sm:block text-sm font-medium text-gray-700">John Doe</span> -->
                   <i class="fas fa-chevron-down text-xs text-gray-400"></i>
                 </button>
 
                 <!-- Profile Menu -->
                 @if (isProfileMenuOpen) {
-                  <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100
-                              animate-fade-in">
+                  <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100">
                     <div class="py-2">
                       <a href="#" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
                         <i class="fas fa-user"></i>
@@ -124,19 +113,19 @@ interface MenuItem {
 })
 export class DashboardLayoutComponent {
   isProfileMenuOpen = false;
-  isSidebarOpen = false;
+  isSidebarOpen = true; // Default to open
 
   menuItems: MenuItem[] = [
     {
       icon: 'fas fa-home',
       label: 'Tableau de Bord',
-      route: '/dashboard'
+      route: '/dashboard/dsh-cnt',
+      badge: 'Nouveau'
     },
     {
       icon: 'fas fa-users',
       label: 'Gestion des Utilisateurs',
-      route: '/dashboard/users',
-      badge: 'Nouveau'
+      route: '/dashboard/users'
     },
     {
       icon: 'fas fa-credit-card',
