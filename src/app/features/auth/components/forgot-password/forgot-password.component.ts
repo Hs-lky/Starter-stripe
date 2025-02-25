@@ -12,7 +12,8 @@ export class ForgotPasswordComponent {
     forgotPasswordForm: FormGroup;
     isLoading = false;
     error: string | null = null;
-    success: string | null = null;
+    success = false;
+    submittedEmail = '';
 
     constructor(
         private formBuilder: FormBuilder,
@@ -24,19 +25,35 @@ export class ForgotPasswordComponent {
         });
     }
 
+    get emailControl() {
+        return this.forgotPasswordForm.get('email');
+    }
+
+    get emailError(): string {
+        if (this.emailControl?.errors?.['required'] && this.emailControl.touched) {
+            return 'L\'adresse e-mail est requise';
+        }
+        if (this.emailControl?.errors?.['email'] && this.emailControl.touched) {
+            return 'Veuillez entrer une adresse e-mail valide';
+        }
+        return '';
+    }
+
     onSubmit(): void {
         if (this.forgotPasswordForm.invalid) {
+            this.forgotPasswordForm.markAllAsTouched();
             return;
         }
 
         this.isLoading = true;
         this.error = null;
-        this.success = null;
+        const email = this.emailControl?.value;
 
-        this.authService.forgotPassword(this.forgotPasswordForm.get('email')?.value)
+        this.authService.forgotPassword(email)
             .subscribe({
                 next: () => {
-                    this.success = 'Les instructions de réinitialisation du mot de passe ont été envoyées à votre email.';
+                    this.success = true;
+                    this.submittedEmail = email;
                     this.isLoading = false;
                 },
                 error: (error) => {
@@ -44,5 +61,15 @@ export class ForgotPasswordComponent {
                     this.isLoading = false;
                 }
             });
+    }
+
+    tryAgain(): void {
+        this.success = false;
+        this.error = null;
+        this.forgotPasswordForm.reset();
+    }
+
+    goToLogin(): void {
+        this.router.navigate(['/auth/login']);
     }
 } 
