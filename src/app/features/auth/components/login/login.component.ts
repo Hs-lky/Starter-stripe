@@ -44,9 +44,32 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/dashboard']);
                 },
                 error: (error) => {
-                    this.error = error.error || 'Une erreur est survenue lors de la connexion';
+                    console.log('Full error response:', error);
                     this.isLoading = false;
+                    this.handleErrorResponse(error);
                 }
             });
+        }
+    
+
+    private handleErrorResponse(error: any): void {
+        if (error.error instanceof ErrorEvent) {
+            // Client-side error
+            this.error = `Error: ${error.error.message}`;
+        } else {
+            // Server-side error
+            try {
+                // Access the error response directly
+                const errorBody = error.error;
+
+                // Log the error body in JSON format
+                console.log('Parsed error body:', JSON.stringify(errorBody, null, 2));
+
+                // Display the message from the error response
+                this.error = errorBody?.message || 'Une erreur est survenue lors de l\'inscription';
+            } catch (e) {
+                this.error = 'Une erreur est survenue lors de l\'inscription';
+            }
+        }
     }
 } 
