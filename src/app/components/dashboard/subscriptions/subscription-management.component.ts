@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, PLATFORM_ID, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SubscriptionService } from '../../../core/services/subscription.service';
@@ -15,13 +15,14 @@ import { Subject, of, forkJoin } from 'rxjs';
   templateUrl: './subscription-management.component.html'
 })
 export class SubscriptionManagementComponent implements OnInit, OnDestroy {
+  @ViewChild('dropdownTrigger') dropdownTrigger!: ElementRef;
+  
   private platformId = inject(PLATFORM_ID);
   currentUser: User | null = null;
   currentSubscription: Subscription | null = null;
   subscriptionHistory: Subscription[] = [];
   errorMessage = '';
   isLoading = false;
-  showUpgradeOptions = false;
   private destroy$ = new Subject<void>();
 
   availablePlans: PlanDetails[] = [
