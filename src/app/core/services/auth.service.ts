@@ -64,14 +64,16 @@ export class AuthService {
     }
 
     forgotPassword(email: string): Observable<string> {
-        return this.http.post<string>(`${this.API_URL}/forgot-password`, null, {
-            params: { email }
+        return this.http.post(`${this.API_URL}/forgot-password`, null, {
+            params: { email },
+            responseType: 'text'
         });
     }
 
     resetPassword(token: string, newPassword: string): Observable<string> {
-        return this.http.post<string>(`${this.API_URL}/reset-password`, null, {
-            params: { token, newPassword }
+        return this.http.post(`${this.API_URL}/reset-password`, null, {
+            params: { token, newPassword },
+            responseType: 'text'
         });
     }
 
