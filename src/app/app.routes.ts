@@ -9,6 +9,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 // Routes
 import { HomeComponent } from './pages/home/home.component';
 import { SubscriptionManagementComponent } from './components/dashboard/subscriptions/subscription-management.component';
+import { DashboardContentComponent } from './components/dashboard/dashboard-content/dashboard-content.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,10 @@ export const routes: Routes = [
       {
         path: 'users',
         component: UserManagementComponent
+      },
+      {
+        path: 'dsh-cnt',
+        component: DashboardContentComponent
       },
       {
         path: 'subscriptions',
